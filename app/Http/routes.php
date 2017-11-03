@@ -26,8 +26,10 @@ Route::group(['prefix' => 'api'], function()
 // Admin Routes
 Route::group(['prefix' => 'admin'], function()
 {
-	// Route::get('/', 'AdminController@index');
-	// Route::any('login', 'AdminController@login');
+	Route::get('/', 'AdminController@index');
+	Route::any('login', 'AdminController@login');
+	Route::get('logout', 'AdminController@logout');
+
 
 	// Appointment Routes
 	Route::get('appointments', 'AdminController@appointments');

@@ -37,7 +37,13 @@
           <li><a href="{{ url('admin/configuration') }}">Configuration</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">Log Out</a></li>
+          <li><a href="{{ url('admin/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log Out
+          </a>
+           <form id="logout-form" action="{{ url('admin/logout') }}" 
+           method="GET" style="display: none;"> {{ csrf_field() }}
+           </form>
+      
+          </li>
         </ul>
       </div>
     </div>

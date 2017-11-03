@@ -1,12 +1,10 @@
 <?php
 namespace App\Http\Controllers;
-
 use App\Models\Appointment;
 use App\Models\Package;
 use App\Models\Customer;
 use App\Models\Configuration;
 use App\Models\TimeInterval;
-
 use Input;
 use Auth;
 use View;
@@ -34,23 +32,26 @@ class AdminController extends Controller {
       return view('admin/login')->with('errors', $errors);
     }
   }
+/**  masterclass code */
+ public function logout(){
+   
+    return redirect('admin/');
+}
+
 
   public function appointments()
   {
     return view('admin/appointments');
   }
-
   public function availability()
   {
     return view('admin/availability');
   }
-
   public function configuration()
   {
     $configuration = Configuration::with('timeInterval')->first();
     return view('admin/configuration', ['configuration' => $configuration]);
   }
-
   /**
    * View function for list of packages
    * @return view 
@@ -59,7 +60,6 @@ class AdminController extends Controller {
     $packages = Package::all();
     return view('admin/packages/index', ['packages' => $packages]);
   }
-
   /**
    * View Function to edit package information
    * @param  int $package_id
@@ -69,15 +69,12 @@ class AdminController extends Controller {
   {
     return view('admin/packages/editPackage', ['package' => Package::find($package_id)]);
   }
-
   public function updatePackage($package_id)
   {
     dd('tets');
   }
-
   public function anySetTime()
   {
     dd('test');
   }
-
 }
